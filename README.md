@@ -1,3 +1,3 @@
 # Projeto programação web Unisul
 
-Projeto da disciplina de programaçao web da Unisul, usando spring boot
+Projeto da disciplina de programaçao web da Unisul, usando spring boot.
