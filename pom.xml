@@ -15,7 +15,13 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+        </configuration>
     </properties>
 
     <dependencies>

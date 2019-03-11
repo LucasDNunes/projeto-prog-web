@@ -13,7 +13,7 @@ import java.util.List;
 public class CategoriaController {
 
     @GetMapping
-    public List<Categoria> listar(){
+    public List<Categoria> listar() {
         return Collections.singletonList(Categoria.builder()
                 .id(1L)
                 .nome("teste")
