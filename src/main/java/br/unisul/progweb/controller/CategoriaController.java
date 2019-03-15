@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/categorias")
 public class CategoriaController {
-
+    
     @GetMapping
     public List<Categoria> listar() {
         return Collections.singletonList(Categoria.builder()
