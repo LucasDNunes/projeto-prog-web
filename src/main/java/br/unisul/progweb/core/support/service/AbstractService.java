@@ -2,12 +2,12 @@ package br.unisul.progweb.core.support.service;
 
 import br.unisul.progweb.core.support.MessageBundle;
 import br.unisul.progweb.core.support.entity.BaseEntity;
-import br.unisul.progweb.core.support.repository.BaseRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.persistence.jpa.jpql.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.orm.jpa.JpaOptimisticLockingFailureException;
 
 import javax.persistence.OptimisticLockException;
@@ -20,7 +20,7 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 @Slf4j
-public abstract class AbstractService<E extends BaseEntity, K extends Serializable, R extends BaseRepository<E, K>>
+public abstract class AbstractService<E extends BaseEntity, K extends Serializable, R extends JpaRepository<E, K>>
         implements BaseService<E, K> {
 
     @Autowired
