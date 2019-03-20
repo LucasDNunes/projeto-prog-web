@@ -24,7 +24,7 @@ public abstract class AbstractController<E extends BaseEntity, K extends Seriali
     @Autowired
     protected S service;
 
-    public Page<E> listarPagina(@PageableDefault Pageable pageable) {
+    public Page<E> listarPagina(@PageableDefault(size = Integer.MAX_VALUE) Pageable pageable) {
         return service.listarPagina(pageable);
     }
 
