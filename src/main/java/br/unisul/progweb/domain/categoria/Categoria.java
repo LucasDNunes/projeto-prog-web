@@ -1,26 +1,32 @@
 package br.unisul.progweb.domain.categoria;
 
-import lombok.*;
+import br.unisul.progweb.core.support.entity.BaseEntity;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-import java.io.Serializable;
+import javax.persistence.*;
 
 @Entity
-@Builder
-@NoArgsConstructor
+@Table(name = "categoria")
+@Data
 @AllArgsConstructor
-@Setter
-@Getter
-public class Categoria implements Serializable {
+@NoArgsConstructor
+@Builder
+public class Categoria implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "nome")
     private String nome;
 }
+
+
+
+
+

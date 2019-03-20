@@ -18,7 +18,7 @@ public class DbService {
 	
 	public void inicializaBancoDeDados() throws ParseException {
 
-		Categoria cat1 = new Categoria(null, "Informaíca");;
+		Categoria cat1 = new Categoria(null, "Informaíca");
 		Categoria cat2 = new Categoria(null, "Escritório");
 		Categoria cat3 = new Categoria(null, "Cama mesa e banho");
 		Categoria cat4 = new Categoria(null, "Eletrônicos");
