@@ -8,6 +8,7 @@ public interface BaseEntity {
 
     Object getId();
 
+    @JsonIgnore
     default String getBase64() {
         return null;
     }
