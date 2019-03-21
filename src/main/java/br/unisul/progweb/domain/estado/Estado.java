@@ -1,20 +1,18 @@
-package br.unisul.progweb.domain.categoria;
+package br.unisul.progweb.domain.estado;
 
 import br.unisul.progweb.core.support.entity.BaseEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "categoria")
-@Data
+@Table(name = "estado")
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Categoria implements BaseEntity {
+public class Estado implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
@@ -24,9 +22,7 @@ public class Categoria implements BaseEntity {
 
     @Column(name = "nome")
     private String nome;
+
+    @Column(name = "uf")
+    private String uf;
 }
-
-
-
-
-

@@ -1,22 +1,13 @@
 package br.unisul.progweb.controller;
 
+import br.unisul.progweb.core.support.controller.AbstractController;
 import br.unisul.progweb.domain.categoria.Categoria;
-import org.springframework.web.bind.annotation.GetMapping;
+import br.unisul.progweb.domain.categoria.CategoriaService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collections;
-import java.util.List;
-
 @RestController
 @RequestMapping("/categorias")
-public class CategoriaController {
+public class CategoriaController extends AbstractController<Categoria, Long, CategoriaService> {
 
-    @GetMapping
-    public List<Categoria> listar(){
-        return Collections.singletonList(Categoria.builder()
-                .id(1L)
-                .nome("teste")
-                .build());
-    }
 }
