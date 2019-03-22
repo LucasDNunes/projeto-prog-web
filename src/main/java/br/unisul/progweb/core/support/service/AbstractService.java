@@ -115,6 +115,11 @@ public abstract class AbstractService<E extends BaseEntity, K extends Serializab
         return repo.existsById(id);
     }
 
+    @Override
+    public Page<E> listarPorSpecification(String params, Pageable pageable) {
+        return null;
+    }
+
     private void capturaException(ConstraintViolationException excecao) {
         Iterator<ConstraintViolation<?>> iterator = excecao.getConstraintViolations().iterator();
         while (iterator.hasNext()) {

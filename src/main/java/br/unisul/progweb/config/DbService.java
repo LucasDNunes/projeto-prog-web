@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import br.unisul.progweb.domain.categoria.Categoria;
 import br.unisul.progweb.domain.categoria.CategoriaRepository;
 
-@Service
+//@Service
 public class DbService {
 	
 	@Autowired

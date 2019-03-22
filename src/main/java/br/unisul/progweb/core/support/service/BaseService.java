@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import java.io.Serializable;
 import java.util.Optional;
 
-public interface BaseService<T extends BaseEntity, K extends Serializable> {
+public interface BaseService<E extends BaseEntity, K extends Serializable> {
     /**
      * Saves a given entity. Use the returned instance for further operations as the save operation might have changed the
      * entity instance completely.
@@ -15,20 +15,20 @@ public interface BaseService<T extends BaseEntity, K extends Serializable> {
      * @param entity
      * @return the saved entity
      */
-    T salvar(T entity, boolean valida);
+    E salvar(E entity, boolean valida);
 
-    T salvar(T entity);
+    E salvar(E entity);
 
     /**
      * Returns all instances of the type.
      *
      * @return all entities
      */
-    Page<T> listarPagina(Pageable pageable);
+    Page<E> listarPagina(Pageable pageable);
 
-    Page<T> listarPorParticula(String particula, Pageable pageable);
+    Page<E> listarPorParticula(String particula, Pageable pageable);
 
-//    Page<T> listarPorSpecification(String params, Pageable pageable);
+    Page<E> listarPorSpecification(String params, Pageable pageable);
 
     /**
      * Deletes a given entity.
@@ -42,7 +42,7 @@ public interface BaseService<T extends BaseEntity, K extends Serializable> {
      *
      * @param id
      */
-    Optional<T> buscarPorId(K id);
+    Optional<E> buscarPorId(K id);
 
     long quantidadeTotal();
 

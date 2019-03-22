@@ -160,12 +160,12 @@
                     <user>root</user>
                     <password>root</password>
                 </configuration>
-                <!--<dependencies>-->
-                    <!--<dependency>-->
-                        <!--<groupId>com.h2database</groupId>-->
-                        <!--<artifactId>h2</artifactId>-->
-                        <!--<version>1.4.197</version>-->
-                    <!--</dependency>-->
+                <!--&lt;!&ndash;<dependencies>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<groupId>com.h2database</groupId>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<artifactId>h2</artifactId>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<scope>test</scope>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</dependency>&ndash;&gt;-->
                 <!--</dependencies>-->
             </plugin>
         </plugins>

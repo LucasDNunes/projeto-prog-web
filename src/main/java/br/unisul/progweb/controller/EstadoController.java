@@ -19,13 +19,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/estados")
-public class EstadoController extends AbstractController<Estado, Long, EstadoService> {
+public class EstadoController extends AbstractController<Estado, EstadoDto, Long, EstadoService> {
 
     private final ModelMapper modelMapper;
     private final EstadoService estadoService;
 
     @Autowired
     public EstadoController(ModelMapper modelMapper, EstadoService estadoService) {
+        super(EstadoDto.class, Estado.class);
         this.modelMapper = modelMapper;
         this.estadoService = estadoService;
     }
