@@ -1,31 +1,52 @@
 package br.unisul.progweb.core.support.controller;
 
 import br.unisul.progweb.core.exception.RegistroNaoEncontradoException;
+import br.unisul.progweb.core.support.entity.BaseDto;
 import br.unisul.progweb.core.support.entity.BaseEntity;
 import br.unisul.progweb.core.support.service.BaseService;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
-public abstract class AbstractController<E extends BaseEntity, K extends Serializable, S extends BaseService<E, K>>
-        implements BaseController<E, K> {
+public abstract class AbstractController<E extends BaseEntity, D extends BaseDto, K extends Serializable, S extends BaseService<E, K>>
+        implements BaseController<E, D, K> {
 
     @Autowired
     protected S service;
+    private Class<D> dto;
+    private Class<E> entidade;
 
-    public Page<E> listarPagina(@PageableDefault(size = Integer.MAX_VALUE) Pageable pageable) {
-        return service.listarPagina(pageable);
+    @Autowired
+    private ModelMapper modelMapper;
+
+    protected AbstractController(Class<D> dto, Class<E> entity) {
+        this.dto = dto;
+        this.entidade = entity;
+    }
+
+    public Page<D> listarPagina(@PageableDefault(size = Integer.MAX_VALUE) Pageable pageable) {
+        List<D> dtos = new ArrayList<>();
+        List<E> es = service.listarPagina(pageable).getContent();
+        es.forEach(e -> dtos.add(modelMapper.map(e, dto)));
+
+        return new PageImpl<>(dtos);
     }
 
     public Page<E> listarPorParticula(@RequestParam("particula") String particula,
@@ -33,11 +54,16 @@ public abstract class AbstractController<E extends BaseEntity, K extends Seriali
         return service.listarPorParticula(particula, pageable);
     }
 
-    public ResponseEntity<E> incluir(@RequestBody E e) {
-        return ResponseEntity.ok().body(service.salvar(e));
+    @ResponseStatus(HttpStatus.CREATED)
+    @Override
+    public D incluir(@RequestBody D e) {
+        E map = modelMapper.map(e, entidade);
+        map = service.salvar(map);
+        return modelMapper.map(map, dto);
     }
 
-    public ResponseEntity<Optional<E>> buscarPorId(@PathVariable K id) {
+    @Override
+    public Optional<D> buscarPorId(@PathVariable K id) {
         log.debug("Pesquisando objeto com id {}", id);
         final Optional<E> entity = service.buscarPorId(id);
         log.debug("Pesquisou {} com id {}", entity.getClass().getSimpleName(), id);
@@ -45,20 +71,25 @@ public abstract class AbstractController<E extends BaseEntity, K extends Seriali
             throw new RegistroNaoEncontradoException(((Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0]).getSimpleName(), id);
         }
         log.debug("Encontrou {} com id {}", entity.getClass().getSimpleName(), id);
-        return ResponseEntity.ok().body(entity);
+        return Optional.of(modelMapper.map(entity.get(), dto));
     }
 
-    public ResponseEntity<Object> atualizar(@RequestBody E e, @PathVariable K id) {
+
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public Object atualizar(@RequestBody D d, @PathVariable K id) {
         if (service.existe(id)) {
-            return ResponseEntity.ok().body(service.salvar(e));
+            E e = modelMapper.map(d, entidade);
+            e = service.salvar(e);
+            return modelMapper.map(e, dto);
         } else {
-            throw new RegistroNaoEncontradoException(e.getClass().getSimpleName(), id);
+            throw new RegistroNaoEncontradoException(d.getClass().getSimpleName(), id);
         }
     }
 
-    public ResponseEntity<Object> excluir(@PathVariable K id) {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public Object excluir(@PathVariable K id) {
         if (service.excluir(id)) {
-            return ResponseEntity.ok().build();
+            return ResponseEntity.EMPTY;
         }
         throw new RegistroNaoEncontradoException("Registro", id);
     }

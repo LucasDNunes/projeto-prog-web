@@ -1,4 +1,4 @@
-package br.unisul.progweb.domain.categoria.controller;
+package br.unisul.progweb.controller;
 
 
 import br.unisul.progweb.ProgWebApplicationServerTests;

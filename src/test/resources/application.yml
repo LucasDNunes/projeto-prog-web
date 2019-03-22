@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:h2:./data/db
+    driver-class-name: org.h2.Driver
+  cache:
+    type: none
+  jpa:
+    show-sql: true
+  messages:
+    basename: messages/messages
+  flyway:
+    locations: classpath:/db/migration/comum

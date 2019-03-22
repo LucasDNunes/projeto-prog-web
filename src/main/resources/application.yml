@@ -16,3 +16,7 @@ spring:
     basename: messages/messages
   flyway:
     locations: classpath:/db/migration/comum
+  h2:
+    console:
+      path: /h2
+      enabled: true
