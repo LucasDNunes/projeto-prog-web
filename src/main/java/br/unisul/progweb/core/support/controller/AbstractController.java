@@ -37,6 +37,10 @@ public abstract class AbstractController<E extends BaseEntity, D extends BaseDto
     private ModelMapper modelMapper;
 
     protected AbstractController(Class<D> dto, Class<E> entity) {
+        /* tentar esse metodo em vez de pegar do parametro*/
+//        final ParameterizedType type = (ParameterizedType) getClass().getGenericSuperclass();
+//        Class<D> theType = (Class<D>) (type).getActualTypeArguments()[0];
+//        theType.getClass();
         this.dto = dto;
         this.entidade = entity;
     }

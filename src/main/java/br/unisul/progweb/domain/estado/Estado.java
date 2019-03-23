@@ -1,9 +1,12 @@
 package br.unisul.progweb.domain.estado;
 
 import br.unisul.progweb.core.support.entity.BaseEntity;
+import br.unisul.progweb.domain.cidade.Cidade;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "estado")
@@ -25,4 +28,9 @@ public class Estado implements BaseEntity {
 
     @Column(name = "uf")
     private String uf;
+
+    @JsonIgnore
+    @OneToMany
+    @JoinColumn(name = "estado_id")
+    private List<Cidade> cidades;
 }

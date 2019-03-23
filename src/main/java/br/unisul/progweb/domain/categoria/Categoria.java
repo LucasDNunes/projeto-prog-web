@@ -1,12 +1,15 @@
 package br.unisul.progweb.domain.categoria;
 
 import br.unisul.progweb.core.support.entity.BaseEntity;
+import br.unisul.progweb.domain.produto.Produto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "categoria")
@@ -24,6 +27,10 @@ public class Categoria implements BaseEntity {
 
     @Column(name = "nome")
     private String nome;
+
+    @Builder.Default
+    @ManyToMany(mappedBy = "categorias")
+    private List<Produto> produtos = new ArrayList<>();
 }
 
 
