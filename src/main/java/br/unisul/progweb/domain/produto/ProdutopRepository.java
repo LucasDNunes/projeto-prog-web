@@ -9,5 +9,5 @@ import java.util.List;
 @RepositoryRestResource(exported = false)
 public interface ProdutopRepository extends JpaRepository<Produto, Long> {
 
-    List<Produto> findDistinctByNomeContaningAndCategoriasIn(String nome, List<Categoria> categorias);
+    List<Produto> findDistinctByNomeContainingAndCategoriasIn(String nome, List<Categoria> categorias);
 }

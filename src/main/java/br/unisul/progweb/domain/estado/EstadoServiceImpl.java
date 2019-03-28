@@ -9,6 +9,6 @@ import java.util.List;
 public class EstadoServiceImpl extends AbstractService<Estado, Long, EstadoRepository> implements EstadoService {
     @Override
     public List<Estado> ListarPorOrdemAlfabetica() {
-        return repo.findAllbyOrderByNome();
+        return repo.findAllByOrderByNome();
     }
 }

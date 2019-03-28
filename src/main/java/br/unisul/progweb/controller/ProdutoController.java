@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/produtos")
@@ -26,7 +27,7 @@ public class ProdutoController extends AbstractController<Produto, ProdutoDto, L
     @Autowired
     ModelMapper modelMapper;
 
-    @GetMapping
+    @GetMapping("/busca-categoria")
     public List<ProdutoDto> buscarNomeCategoria(@RequestParam(value = "nome") String nome,
                                                 @RequestParam(value = "categorias") String categorias){
 
@@ -34,11 +35,7 @@ public class ProdutoController extends AbstractController<Produto, ProdutoDto, L
 
         String nomeDecoded = URL.decodeParam(nome);
         List<Long> ids = URL.decodeIntList(categorias);
-        List<Produto> list = service.buscarProdutoPorNomeContidaEmCategorias(nomeDecoded, ids);
-        List<ProdutoDto> listDto = new ArrayList<>();
-        for (Produto p : list) {
-            listDto.add(modelMapper.map(p, ProdutoDto.class));
-        }
-        return (listDto);
+        return service.buscarProdutoPorNomeContidaEmCategorias(nomeDecoded, ids).stream()
+                .map(p -> modelMapper.map(p, ProdutoDto.class)).collect(Collectors.toList());
     }
 }

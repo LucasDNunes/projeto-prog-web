@@ -8,5 +8,5 @@ import java.util.List;
 public interface EstadoRepository extends JpaRepository<Estado, Long> {
 
     @Transactional(readOnly = true)
-    List<Estado> findAllbyOrderByNome();
+    List<Estado> findAllByOrderByNome();
 }
