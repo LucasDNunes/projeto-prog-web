@@ -31,6 +31,11 @@ public class Categoria implements BaseEntity {
     @Builder.Default
     @ManyToMany(mappedBy = "categorias")
     private List<Produto> produtos = new ArrayList<>();
+
+    public Categoria(String nome) {
+        this.nome = nome;
+        this.produtos = new ArrayList<>();
+    }
 }
 
 

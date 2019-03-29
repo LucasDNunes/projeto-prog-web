@@ -11,7 +11,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/categorias")
 public class CategoriaController extends AbstractController<Categoria, CategoriaDto, Long, CategoriaService> {
 
-    public CategoriaController() {
-        super(CategoriaDto.class, Categoria.class);
-    }
 }

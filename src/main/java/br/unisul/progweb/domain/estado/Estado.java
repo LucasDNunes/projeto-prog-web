@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -29,8 +30,14 @@ public class Estado implements BaseEntity {
     @Column(name = "uf")
     private String uf;
 
+    @Builder.Default
     @JsonIgnore
-    @OneToMany
-    @JoinColumn(name = "estado_id")
-    private List<Cidade> cidades;
+    @OneToMany(mappedBy = "estado")
+    private List<Cidade> cidades = new ArrayList<>();
+
+    public Estado(String nome, String uf) {
+        this.nome = nome;
+        this.uf = uf;
+        this.cidades = new ArrayList<>();
+    }
 }

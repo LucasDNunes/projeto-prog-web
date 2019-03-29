@@ -24,5 +24,8 @@ public class Cidade implements BaseEntity {
     @JoinColumn(name = "estado_id")
     private Estado estado;
 
-
+    public Cidade(String nome, Estado estado) {
+        this.nome = nome;
+        this.estado = estado;
+    }
 }

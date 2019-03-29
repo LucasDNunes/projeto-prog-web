@@ -35,4 +35,10 @@ public class Produto implements BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "categoria_id")
     )
     private List<Categoria> categorias = new ArrayList<>();
+
+    public Produto(String nome, Double valor) {
+        this.nome = nome;
+        this.valor = valor;
+        this.categorias = new ArrayList<>();
+    }
 }

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,18 +19,12 @@ import java.util.stream.Collectors;
 @RequestMapping("/produtos")
 public class ProdutoController extends AbstractController<Produto, ProdutoDto, Long, ProdutoService> {
 
-    public ProdutoController() {
-        super(ProdutoDto.class, Produto.class);
-    }
-
     @Autowired
     ModelMapper modelMapper;
 
     @GetMapping("/busca-categoria")
     public List<ProdutoDto> buscarNomeCategoria(@RequestParam(value = "nome") String nome,
-                                                @RequestParam(value = "categorias") String categorias){
-
-
+                                                @RequestParam(value = "categorias") String categorias) {
 
         String nomeDecoded = URL.decodeParam(nome);
         List<Long> ids = URL.decodeIntList(categorias);
