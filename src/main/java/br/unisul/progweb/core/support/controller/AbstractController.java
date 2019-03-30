@@ -52,7 +52,7 @@ public abstract class AbstractController<E extends BaseEntity, D extends BaseDto
     }
 
     public Page<E> listarPorParticula(@RequestParam("particula") String particula,
-                                      @PageableDefault(page = 0, size = 10) Pageable pageable) {
+                                      @PageableDefault Pageable pageable) {
         return service.listarPorParticula(particula, pageable);
     }
 
