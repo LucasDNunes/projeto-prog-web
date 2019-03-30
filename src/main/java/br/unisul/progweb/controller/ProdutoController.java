@@ -19,8 +19,12 @@ import java.util.stream.Collectors;
 @RequestMapping("/produtos")
 public class ProdutoController extends AbstractController<Produto, ProdutoDto, Long, ProdutoService> {
 
+    private final ModelMapper modelMapper;
+
     @Autowired
-    ModelMapper modelMapper;
+    public ProdutoController(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
 
     @GetMapping("/busca-categoria")
     public List<ProdutoDto> buscarNomeCategoria(@RequestParam(value = "nome") String nome,

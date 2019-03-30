@@ -1,7 +1,7 @@
 package br.unisul.progweb.domain.cliente;
 
 import br.unisul.progweb.core.support.entity.BaseEntity;
-import br.unisul.progweb.domain.Endereco.Endereco;
+import br.unisul.progweb.domain.endereco.Endereco;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -2,7 +2,10 @@ package br.unisul.progweb.domain.cidade;
 
 import br.unisul.progweb.core.support.entity.BaseEntity;
 import br.unisul.progweb.domain.estado.Estado;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -10,8 +13,6 @@ import javax.persistence.*;
 @Setter
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class Cidade implements BaseEntity {
 
     @Id
@@ -24,6 +25,7 @@ public class Cidade implements BaseEntity {
     @JoinColumn(name = "estado_id")
     private Estado estado;
 
+    @Builder
     public Cidade(String nome, Estado estado) {
         this.nome = nome;
         this.estado = estado;

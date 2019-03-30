@@ -1,7 +1,7 @@
 package br.unisul.progweb.config;
 
-import br.unisul.progweb.domain.Endereco.Endereco;
-import br.unisul.progweb.domain.Endereco.EnderecoRepository;
+import br.unisul.progweb.domain.endereco.Endereco;
+import br.unisul.progweb.domain.endereco.EnderecoRepository;
 import br.unisul.progweb.domain.categoria.Categoria;
 import br.unisul.progweb.domain.categoria.CategoriaRepository;
 import br.unisul.progweb.domain.cidade.Cidade;

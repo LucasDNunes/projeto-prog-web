@@ -3,7 +3,10 @@ package br.unisul.progweb.domain.produto;
 import br.unisul.progweb.core.support.entity.BaseEntity;
 import br.unisul.progweb.domain.categoria.Categoria;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -13,8 +16,6 @@ import java.util.List;
 @Setter
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class Produto implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
@@ -27,7 +28,6 @@ public class Produto implements BaseEntity {
 
     private Double valor;
 
-    @Builder.Default
     @JsonIgnore
     @ManyToMany
     @JoinTable(name = "PRODUTO_CATEGORIA",
@@ -36,6 +36,7 @@ public class Produto implements BaseEntity {
     )
     private List<Categoria> categorias = new ArrayList<>();
 
+    @Builder
     public Produto(String nome, Double valor) {
         this.nome = nome;
         this.valor = valor;

@@ -2,7 +2,7 @@ package br.unisul.progweb.domain.cliente;
 
 import br.unisul.progweb.controller.dto.ClienteNewDto;
 import br.unisul.progweb.core.support.service.AbstractService;
-import br.unisul.progweb.domain.Endereco.Endereco;
+import br.unisul.progweb.domain.endereco.Endereco;
 import br.unisul.progweb.domain.cidade.Cidade;
 import org.springframework.stereotype.Service;
 

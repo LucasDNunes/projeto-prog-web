@@ -1,4 +1,4 @@
-package br.unisul.progweb.domain.Endereco;
+package br.unisul.progweb.domain.endereco;
 
 import br.unisul.progweb.core.support.entity.BaseEntity;
 import br.unisul.progweb.domain.cidade.Cidade;
