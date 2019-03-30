@@ -10,6 +10,10 @@ import java.util.List;
 @Slf4j
 public class URL {
 
+    private URL() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static String decodeParam(String param) {
         try {
             return URLDecoder.decode(param, "UTF-8");

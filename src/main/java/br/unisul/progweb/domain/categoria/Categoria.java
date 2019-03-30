@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Categoria implements BaseEntity {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2405172041950251807L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

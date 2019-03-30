@@ -9,7 +9,7 @@ import java.util.List;
 public class CategoriaServiceImpl extends AbstractService<Categoria, Long, CategoriaRepository> implements CategoriaService {
 
     @Override
-    public List<Categoria> BuscarTodosPorId(List<Long> ids) {
+    public List<Categoria> buscarTodosPorId(List<Long> ids) {
         return repo.findAllById(ids);
     }
 }

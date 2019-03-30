@@ -1,7 +1,5 @@
 package br.unisul.progweb.config;
 
-import br.unisul.progweb.domain.endereco.Endereco;
-import br.unisul.progweb.domain.endereco.EnderecoRepository;
 import br.unisul.progweb.domain.categoria.Categoria;
 import br.unisul.progweb.domain.categoria.CategoriaRepository;
 import br.unisul.progweb.domain.cidade.Cidade;
@@ -9,6 +7,8 @@ import br.unisul.progweb.domain.cidade.CidadeRepository;
 import br.unisul.progweb.domain.cliente.Cliente;
 import br.unisul.progweb.domain.cliente.ClienteRepository;
 import br.unisul.progweb.domain.cliente.TipoCliente;
+import br.unisul.progweb.domain.endereco.Endereco;
+import br.unisul.progweb.domain.endereco.EnderecoRepository;
 import br.unisul.progweb.domain.estado.Estado;
 import br.unisul.progweb.domain.estado.EstadoRepository;
 import br.unisul.progweb.domain.produto.Produto;
@@ -59,12 +59,12 @@ public class DbService {
         Estado e2 = new Estado("Santa Catarina", "SC");
         Estado e3 = new Estado("Rio Grande do Sul", "RS");
 
-        Cidade c1 = new Cidade("Curitiba", e1);
-        Cidade c2 = new Cidade("Tubarão", e2);
-        Cidade c3 = new Cidade("Gravatal", e2);
-        Cidade c4 = new Cidade("Laguna", e2);
-        Cidade c5 = new Cidade("Porto Alegre", e3);
-        Cidade c6 = new Cidade("Guaíba", e3);
+        Cidade c1 = new Cidade(null, "Curitiba", e1);
+        Cidade c2 = new Cidade(null, "Tubarão", e2);
+        Cidade c3 = new Cidade(null, "Gravatal", e2);
+        Cidade c4 = new Cidade(null, "Laguna", e2);
+        Cidade c5 = new Cidade(null, "Porto Alegre", e3);
+        Cidade c6 = new Cidade(null, "Guaíba", e3);
 
         e1.getCidades().addAll(Collections.singletonList(c1));
         e2.getCidades().addAll(Arrays.asList(c2, c3, c4));

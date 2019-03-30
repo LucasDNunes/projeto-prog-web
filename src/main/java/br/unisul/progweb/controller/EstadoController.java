@@ -33,7 +33,7 @@ public class EstadoController extends AbstractController<Estado, EstadoDto, Long
 
     @GetMapping(value = "/{estadoId}/cidades")
     public ResponseEntity<List<CidadeDto>> findCidades(@PathVariable Long estadoId) {
-        List<Cidade> list = cidadeService.BuscarPorEstado(estadoId);
+        List<Cidade> list = cidadeService.buscarPorEstado(estadoId);
         List<CidadeDto> listDto = list.stream().map(c -> modelMapper.map(c, CidadeDto.class)).collect(Collectors.toList());
         return ResponseEntity.ok().body(listDto);
     }

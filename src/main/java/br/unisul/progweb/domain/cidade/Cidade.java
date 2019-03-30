@@ -15,6 +15,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Cidade implements BaseEntity {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,7 +28,8 @@ public class Cidade implements BaseEntity {
     private Estado estado;
 
     @Builder
-    public Cidade(String nome, Estado estado) {
+    public Cidade(Long id, String nome, Estado estado) {
+        this.id = id;
         this.nome = nome;
         this.estado = estado;
     }

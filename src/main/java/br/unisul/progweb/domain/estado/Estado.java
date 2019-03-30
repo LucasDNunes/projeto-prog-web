@@ -31,7 +31,6 @@ public class Estado implements BaseEntity {
     @Column(name = "uf")
     private String uf;
 
-    @Builder.Default
     @JsonIgnore
     @OneToMany(mappedBy = "estado")
     private List<Cidade> cidades = new ArrayList<>();

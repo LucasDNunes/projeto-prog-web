@@ -4,7 +4,7 @@ import br.unisul.progweb.core.support.service.BaseService;
 
 import java.util.List;
 
-public interface CidadeService extends BaseService<Cidade,Long> {
+public interface CidadeService extends BaseService<Cidade, Long> {
 
-    List<Cidade> BuscarPorEstado(Long idEstado);
+    List<Cidade> buscarPorEstado(Long idEstado);
 }

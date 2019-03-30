@@ -9,7 +9,7 @@ import java.util.List;
 public class CidadeServiceImpl extends AbstractService<Cidade, Long, CidadeRepository> implements CidadeService {
 
     @Override
-    public List<Cidade> BuscarPorEstado(Long idEstado) {
+    public List<Cidade> buscarPorEstado(Long idEstado) {
         return repo.findCidades(idEstado);
     }
 }

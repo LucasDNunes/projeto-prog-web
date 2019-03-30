@@ -10,12 +10,10 @@ public class CategoriaTest {
     @Test
     public void testCreate() {
         Categoria categoria = Categoria.builder()
-                .id(1L)
                 .nome("teste")
                 .build();
 
         assertNotNull(categoria);
-        assertEquals(1L, categoria.getId().longValue());
         assertEquals("teste", categoria.getNome());
     }
 

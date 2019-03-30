@@ -21,7 +21,7 @@ public class ProdutoServiceImpl extends AbstractService<Produto, Long, ProdutopR
 
     @Override
     public List<Produto> buscarProdutoPorNomeContidaEmCategorias(String nome, List<Long> idsCategorias) {
-        List<Categoria> categorias = categoriaService.BuscarTodosPorId(idsCategorias);
+        List<Categoria> categorias = categoriaService.buscarTodosPorId(idsCategorias);
         return repo.findDistinctByNomeContainingAndCategoriasIn(nome, categorias);
     }
 

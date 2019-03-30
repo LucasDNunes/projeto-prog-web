@@ -18,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Produto implements BaseEntity {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 89461695146L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

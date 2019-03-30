@@ -2,9 +2,10 @@ package br.unisul.progweb.core.support.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public interface BaseEntity {
+public interface BaseEntity extends Serializable {
 
     Object getId();
 

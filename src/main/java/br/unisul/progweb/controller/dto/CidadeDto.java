@@ -1,7 +1,6 @@
 package br.unisul.progweb.controller.dto;
 
 import br.unisul.progweb.core.support.entity.BaseDto;
-import br.unisul.progweb.domain.estado.Estado;
 import lombok.*;
 
 @Setter
@@ -11,7 +10,9 @@ import lombok.*;
 @Builder
 public class CidadeDto extends BaseDto {
 
+    private static final long serialVersionUID = 1L;
+
     private Long id;
     private String nome;
-    private Estado estado;
+    private EstadoDto estado;
 }

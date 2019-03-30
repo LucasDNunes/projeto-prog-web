@@ -16,6 +16,8 @@ import javax.persistence.*;
 @Builder
 public class Endereco implements BaseEntity {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
