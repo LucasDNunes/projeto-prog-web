@@ -26,11 +26,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-core</artifactId>
-            <version>5.2.4</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.flywaydb</groupId>-->
+<!--            <artifactId>flyway-core</artifactId>-->
+<!--            <version>5.2.4</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -149,25 +149,25 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.flywaydb</groupId>
-                <artifactId>flyway-maven-plugin</artifactId>
-                <version>5.2.4</version>
-                <configuration>
-                    <!--<url>jdbc:h2:file:./target/foobar</url>-->
-                    <!--<user>sa</user>-->
-                    <url>jdbc:mysql://localhost:3306/pweb?serverTimezone=UTC</url>
-                    <user>root</user>
-                    <password>root</password>
-                </configuration>
-                <!--&lt;!&ndash;<dependencies>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<dependency>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<groupId>com.h2database</groupId>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<artifactId>h2</artifactId>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<scope>test</scope>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</dependency>&ndash;&gt;-->
-                <!--</dependencies>-->
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.flywaydb</groupId>-->
+<!--                <artifactId>flyway-maven-plugin</artifactId>-->
+<!--                <version>5.2.4</version>-->
+<!--                <configuration>-->
+<!--                    &lt;!&ndash;<url>jdbc:h2:file:./target/foobar</url>&ndash;&gt;-->
+<!--                    &lt;!&ndash;<user>sa</user>&ndash;&gt;-->
+<!--                    <url>jdbc:mysql://localhost:3306/pweb?serverTimezone=UTC</url>-->
+<!--                    <user>root</user>-->
+<!--                    <password>root</password>-->
+<!--                </configuration>-->
+<!--                &lt;!&ndash;&lt;!&ndash;<dependencies>&ndash;&gt;&ndash;&gt;-->
+<!--                    &lt;!&ndash;&lt;!&ndash;<dependency>&ndash;&gt;&ndash;&gt;-->
+<!--                        &lt;!&ndash;&lt;!&ndash;<groupId>com.h2database</groupId>&ndash;&gt;&ndash;&gt;-->
+<!--                        &lt;!&ndash;&lt;!&ndash;<artifactId>h2</artifactId>&ndash;&gt;&ndash;&gt;-->
+<!--                        &lt;!&ndash;&lt;!&ndash;<scope>test</scope>&ndash;&gt;&ndash;&gt;-->
+<!--                    &lt;!&ndash;&lt;!&ndash;</dependency>&ndash;&gt;&ndash;&gt;-->
+<!--                &lt;!&ndash;</dependencies>&ndash;&gt;-->
+<!--            </plugin>-->
         </plugins>
     </build>
 

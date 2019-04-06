@@ -1,7 +1,9 @@
 package br.unisul.progweb.domain.cliente;
 
 import br.unisul.progweb.core.support.entity.BaseEntity;
+import br.unisul.progweb.domain.Pedido.Pedido;
 import br.unisul.progweb.domain.endereco.Endereco;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,6 +28,7 @@ public class Cliente implements BaseEntity {
     private String email;
     private String cpfOuCnpj;
     private Long tipo;
+    private Double preco;
 
     @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();
@@ -33,6 +36,10 @@ public class Cliente implements BaseEntity {
     @ElementCollection
     @CollectionTable(name = "TELEFONE")
     private Set<String> telefones = new HashSet<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos = new ArrayList<>();
 
     @Builder
     public Cliente(Long id, String nome, String email, String cpfOuCnpj,
@@ -52,4 +59,6 @@ public class Cliente implements BaseEntity {
     public void setTipo(TipoCliente tipo) {
         this.tipo = tipo.getId();
     }
+
+
 }
