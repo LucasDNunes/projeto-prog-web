@@ -39,7 +39,7 @@ public abstract class AbstractController<E extends BaseEntity, D extends BaseDto
     protected AbstractController() {
         /* tentar esse metodo em vez de pegar do parametro*/
         final ParameterizedType type = (ParameterizedType) getClass().getGenericSuperclass();
-        this.dto = (Class<D>) (type).getActualTypeArguments()[0];
+        this.dto = (Class<D>) (type).getActualTypeArguments()[1];
         this.entidade = (Class<E>) (type).getActualTypeArguments()[0];
     }
 

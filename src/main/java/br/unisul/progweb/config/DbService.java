@@ -124,10 +124,11 @@ public class DbService {
         p2.getItens().addAll(Arrays.asList(ip3));
         p3.getItens().addAll(Arrays.asList(ip2));
 
-        itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));
-
         categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4, cat5, cat6, cat7));
         produtopRepository.saveAll(Arrays.asList(p1, p2, p3));
+
+        itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));
+
     }
 
 }
