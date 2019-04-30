@@ -34,3 +34,5 @@ HELP.md
 mvnw
 
 mvnw\.cmd
+
+data/db\.mv\.db

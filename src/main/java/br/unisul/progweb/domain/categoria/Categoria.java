@@ -1,22 +1,22 @@
 package br.unisul.progweb.domain.categoria;
 
 import br.unisul.progweb.core.support.entity.BaseEntity;
-import lombok.AllArgsConstructor;
+import br.unisul.progweb.domain.produto.Produto;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "categoria")
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class Categoria implements BaseEntity {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2405172041950251807L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +24,15 @@ public class Categoria implements BaseEntity {
 
     @Column(name = "nome")
     private String nome;
+
+    @ManyToMany(mappedBy = "categorias")
+    private List<Produto> produtos = new ArrayList<>();
+
+    @Builder
+    public Categoria(String nome) {
+        this.nome = nome;
+        this.produtos = new ArrayList<>();
+    }
 }
 
 

@@ -8,11 +8,11 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class EstadoDto extends BaseDto {
+public class CidadeDto extends BaseDto {
 
     private static final long serialVersionUID = 1L;
 
     private Long id;
     private String nome;
-    private String uf;
+    private EstadoDto estado;
 }

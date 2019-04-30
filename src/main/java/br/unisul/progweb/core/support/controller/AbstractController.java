@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 public abstract class AbstractController<E extends BaseEntity, D extends BaseDto, K extends Serializable, S extends BaseService<E, K>>
@@ -36,21 +36,21 @@ public abstract class AbstractController<E extends BaseEntity, D extends BaseDto
     @Autowired
     private ModelMapper modelMapper;
 
-    protected AbstractController(Class<D> dto, Class<E> entity) {
-        this.dto = dto;
-        this.entidade = entity;
+    protected AbstractController() {
+        /* tentar esse metodo em vez de pegar do parametro*/
+        final ParameterizedType type = (ParameterizedType) getClass().getGenericSuperclass();
+        this.dto = (Class<D>) (type).getActualTypeArguments()[1];
+        this.entidade = (Class<E>) (type).getActualTypeArguments()[0];
     }
 
     public Page<D> listarPagina(@PageableDefault(size = Integer.MAX_VALUE) Pageable pageable) {
-        List<D> dtos = new ArrayList<>();
-        List<E> es = service.listarPagina(pageable).getContent();
-        es.forEach(e -> dtos.add(modelMapper.map(e, dto)));
-
+        List<D> dtos = service.listarPagina(pageable).getContent().stream()
+                .map(e -> modelMapper.map(e, dto)).collect(Collectors.toList());
         return new PageImpl<>(dtos);
     }
 
     public Page<E> listarPorParticula(@RequestParam("particula") String particula,
-                                      @PageableDefault(page = 0, size = 10) Pageable pageable) {
+                                      @PageableDefault Pageable pageable) {
         return service.listarPorParticula(particula, pageable);
     }
 

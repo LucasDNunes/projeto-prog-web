@@ -1,41 +1,40 @@
 package br.unisul.progweb.controller;
 
+import br.unisul.progweb.controller.dto.CidadeDto;
 import br.unisul.progweb.controller.dto.EstadoDto;
 import br.unisul.progweb.core.support.controller.AbstractController;
+import br.unisul.progweb.domain.cidade.Cidade;
+import br.unisul.progweb.domain.cidade.CidadeService;
 import br.unisul.progweb.domain.estado.Estado;
 import br.unisul.progweb.domain.estado.EstadoService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/estados")
 public class EstadoController extends AbstractController<Estado, EstadoDto, Long, EstadoService> {
 
+    private final CidadeService cidadeService;
     private final ModelMapper modelMapper;
-    private final EstadoService estadoService;
 
     @Autowired
-    public EstadoController(ModelMapper modelMapper, EstadoService estadoService) {
-        super(EstadoDto.class, Estado.class);
+    public EstadoController(CidadeService cidadeService, ModelMapper modelMapper) {
+        this.cidadeService = cidadeService;
         this.modelMapper = modelMapper;
-        this.estadoService = estadoService;
     }
 
-    @GetMapping("/listar")
-    public Page<EstadoDto> listar(@PageableDefault(size = Integer.MAX_VALUE) Pageable pageable) {
-        List<Estado> estados = estadoService.listarPagina(pageable).getContent();
-        List<EstadoDto> estadoDtos = new ArrayList<>();
-        estados.forEach(e -> estadoDtos.add(modelMapper.map(e, EstadoDto.class)));
-        return new PageImpl<>(estadoDtos);
+    @GetMapping(value = "/{estadoId}/cidades")
+    public ResponseEntity<List<CidadeDto>> findCidades(@PathVariable Long estadoId) {
+        List<Cidade> list = cidadeService.buscarPorEstado(estadoId);
+        List<CidadeDto> listDto = list.stream().map(c -> modelMapper.map(c, CidadeDto.class)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(listDto);
     }
 }
