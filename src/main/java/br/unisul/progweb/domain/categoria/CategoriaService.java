@@ -8,4 +8,5 @@ public interface CategoriaService extends BaseService<Categoria, Long> {
 
     List<Categoria> buscarTodosPorId(List<Long> ids);
 
+    List<Categoria> listarPorNome(String nome);
 }

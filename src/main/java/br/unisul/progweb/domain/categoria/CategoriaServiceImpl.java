@@ -12,4 +12,9 @@ public class CategoriaServiceImpl extends AbstractService<Categoria, Long, Categ
     public List<Categoria> buscarTodosPorId(List<Long> ids) {
         return repo.findAllById(ids);
     }
+
+    @Override
+    public List<Categoria> listarPorNome(String nome) {
+        return repo.findByNomeContaining(nome);
+    }
 }
